@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\PersonneController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +21,10 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::post('/login',[AuthController::class,'login']);
-// Route::middleware('auth:sanctum')->group(function(){
-//     Route::get('/user',fn(Request $request)=>$request->user());
-//     Route::post('/personnes',[PersonneController::class,'store']);
-//     Route::get('/personnes',[PersonneController::class,'index']);
-//     Route::get('personnes/{id}',[PersonneController::class,'show']);
-//     Route::put('personnes/{id}',[PersonneController::class,'update']);
-//     Route::delete('personne/{id}',[PersonneController::class,'destroy']);
-
-// });
+ 
+Route::get('/customers',[CustomerController::class,'index']);  
+Route::post('/customers',[CustomerController::class,'store']);
+Route::middleware('auth:sanctum')->group(function(){  
+    // Route::get('/customers',[CustomerController::class,'index']);  
+    // Route::post('/customers',[CustomerController::class,'store']);
+});
